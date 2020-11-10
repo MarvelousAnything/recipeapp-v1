@@ -1,0 +1,20 @@
+server:
+  port: 9000
+  address: "localhost"
+spring:
+  jpa:
+    generate-ddl: true
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/recipeappdb
+    username: postgres
+    password: admin
+app:
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:5432/recipeappdb
+    username: postgres
+    password: admin
