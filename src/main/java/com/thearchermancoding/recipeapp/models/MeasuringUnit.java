@@ -6,6 +6,9 @@ import lombok.NonNull;
 
 import javax.persistence.*;
 
+/**
+ * The type Measuring unit.
+ */
 @Entity
 @Table(name = "measuring_unit")
 @Data

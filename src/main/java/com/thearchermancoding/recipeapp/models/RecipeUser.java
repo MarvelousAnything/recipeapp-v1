@@ -6,6 +6,9 @@ import lombok.NonNull;
 
 import javax.persistence.*;
 
+/**
+ * The type Recipe user.
+ */
 @Entity
 @Table(name = "recipe_user")
 @Data
@@ -13,7 +16,7 @@ import javax.persistence.*;
 public class RecipeUser {
     @Id
     @GeneratedValue
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "id", unique = true)
     private long id;
 
     @NonNull

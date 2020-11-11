@@ -6,6 +6,9 @@ import lombok.NonNull;
 
 import javax.persistence.*;
 
+/**
+ * The type Recipe.
+ */
 @Entity
 @Table(name = "recipe")
 @Data
@@ -13,7 +16,7 @@ import javax.persistence.*;
 public class Recipe {
     @Id
     @GeneratedValue
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "id", unique = true)
     private long id;
 
     @NonNull
@@ -24,7 +27,7 @@ public class Recipe {
     private String description;
 
     @NonNull
-    @Column(name = "author_id", nullable = false)
+    @JoinColumn(name = "author_id", nullable = false)
     @ManyToOne
     private RecipeUser author;
 }
