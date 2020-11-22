@@ -9,8 +9,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
 
-  pgAdmin:
-    image: dpage/pgadmin4
+  adminer:
+    image: adminer
     restart: always
     ports:
-      - 51646:51646
+      - 8080:8080
