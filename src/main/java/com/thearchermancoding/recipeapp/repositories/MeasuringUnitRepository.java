@@ -1,9 +1,11 @@
 package com.thearchermancoding.recipeapp.repositories;
 
 import com.thearchermancoding.recipeapp.models.MeasuringUnit;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface MeasuringUnitRepository extends JpaRepository<MeasuringUnit, Integer>, JpaSpecificationExecutor<MeasuringUnit> {
+@Repository
+public interface MeasuringUnitRepository extends CrudRepository<MeasuringUnit, Long>, JpaSpecificationExecutor<MeasuringUnit> {
 
 }

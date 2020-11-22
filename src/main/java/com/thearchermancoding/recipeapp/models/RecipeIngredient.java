@@ -15,9 +15,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class RecipeIngredient {
     @Id
-    @GeneratedValue
-    @Column(name = "id", unique = true)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_ingredient_generator")
+    @SequenceGenerator(name = "recipe_ingredient_generator", sequenceName = "recipe_ingredient_sequence")
+    @Column(name = "id", unique = true, updatable = false)
+    private Long id;
 
     @NonNull
     @ManyToOne

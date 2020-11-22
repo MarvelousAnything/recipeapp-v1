@@ -15,9 +15,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class MeasuringUnit {
     @Id
-    @GeneratedValue
-    @Column(name = "id", unique = true)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "unit_generator")
+    @SequenceGenerator(name = "unit_generator", sequenceName = "unit_sequence")
+    @Column(name = "id", unique = true, updatable = false)
+    private Long id;
 
     @NonNull
     @Column(name = "unit_name", nullable = false, length = 50)

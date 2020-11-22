@@ -15,9 +15,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class RecipeUser {
     @Id
-    @GeneratedValue
-    @Column(name = "id", unique = true)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
+    @SequenceGenerator(name = "user_generator", sequenceName = "user_sequence")
+    @Column(name = "id", unique = true, updatable = false)
+    private Long id;
 
     @NonNull
     @Column(name = "first_name", length = 50)

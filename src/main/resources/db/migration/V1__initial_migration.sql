@@ -20,7 +20,7 @@ CREATE TABLE recipe_ingredient (
 
 CREATE TABLE step (
     id SERIAL UNIQUE PRIMARY KEY,
-    ingredient_id INTEGER NOT NULL REFERENCES recipe_ingredient(id),
+    step_ingredient_id INTEGER NOT NULL REFERENCES recipe_ingredient(id),
     instruction VARCHAR(255) NOT NULL
 );
 
@@ -41,7 +41,7 @@ CREATE TABLE recipe (
 CREATE TABLE recipe_info (
     id SERIAL UNIQUE PRIMARY KEY,
     step_id INTEGER NOT NULL REFERENCES step(id) ON DELETE CASCADE,
-    ingredient_id INTEGER NOT NULL REFERENCES recipe_ingredient(id) ON DELETE CASCADE,
+    recipe_ingredient_id INTEGER NOT NULL REFERENCES recipe_ingredient(id) ON DELETE CASCADE,
     author_id INTEGER NOT NULL REFERENCES recipe_user(id),
     prep_time INTEGER,
     recipe_id INTEGER NOT NULL REFERENCES recipe(id) ON DELETE CASCADE,

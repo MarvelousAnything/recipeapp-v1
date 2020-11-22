@@ -15,9 +15,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Rating {
     @Id
-    @GeneratedValue
-    @Column(name = "id", unique = true)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rating_generator")
+    @SequenceGenerator(name = "rating_generator", sequenceName = "rating_sequence")
+    @Column(name = "id", unique = true, updatable = false)
+    private Long id;
 
     @NonNull
     @JoinColumn(name = "recipe_id")
