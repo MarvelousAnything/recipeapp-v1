@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_generator")
-    @SequenceGenerator(name = "recipe_generator", sequenceName = "reci_sequence")
+    @SequenceGenerator(name = "recipe_generator", sequenceName = "recipe_sequence")
     @Column(name = "id", unique = true, updatable = false)
     private Long id;
 

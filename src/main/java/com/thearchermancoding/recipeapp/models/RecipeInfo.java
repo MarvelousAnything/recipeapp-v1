@@ -25,15 +25,24 @@ public class RecipeInfo {
     /**
      * The Steps.
      */
-    @JoinColumn(name = "step_id", nullable = false)
-    @ManyToOne(targetEntity = Step.class)    // TODO: Needs to be @OneToMany. Unidirectional with @JoinTable? https://docs.jboss.org/hibernate/stable/annotations/reference/en/html/entity.html#entity-mapping-association-collections
-    private Step steps;
+    @JoinTable(
+            name = "recipe_info_steps",
+            joinColumns = @JoinColumn(name = "recipe_info_id"),
+            inverseJoinColumns = @JoinColumn(name = "step_id")
+    )
+    @OneToMany(targetEntity = Step.class)    // TODO: Needs to be @OneToMany. Unidirectional with @JoinTable? https://docs.jboss.org/hibernate/stable/annotations/reference/en/html/entity.html#entity-mapping-association-collections
+    private List<Step> steps;
+
 
     @NonNull
-    @JoinColumn(name = "ingredient_id", nullable = false) // TODO: I probably can get rid of ingredients. All of the ingredients should be included in step. // TODO: make it so it isn't updatable
-    // TODO: I may benefit from a bidirectional relationship with RecipeIngredient
-    @ManyToOne(targetEntity = RecipeIngredient.class)     // TODO: See if I can get many to many to work how I want it.
-    private RecipeIngredient ingredients;
+    @JoinTable(
+            name = "recipe_info_and_recipe_ingredients",
+            joinColumns = @JoinColumn(name = "recipe_ingredient_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_info_id")
+    )
+    @ManyToMany(targetEntity = RecipeIngredient.class)
+    private List<RecipeIngredient> ingredients;     // TODO: I probably should get rid of this column
+
 
     @NonNull
     @JoinColumn(name = "author_id", nullable = false) // TODO: Either get rid of this of the author join column in Recipe
