@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    database: postgresql
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/recipeappdb
+    username: postgres
+    password: admin
+  profiles:
+    active: @activatedProperties@
+app:
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:5432/recipeappdb
+    username: postgres
+    password: admin
