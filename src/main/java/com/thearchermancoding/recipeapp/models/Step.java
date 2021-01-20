@@ -30,4 +30,7 @@ public class Step {
     @Column(name = "instruction")
     private String instruction;
 
+    @ManyToOne(targetEntity = Recipe.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "recipe_id")
+    private Recipe recipe;
 }

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * The type Recipe.
@@ -31,4 +32,7 @@ public class Recipe {
     @JoinColumn(name = "author_id", nullable = false)
     @ManyToOne(targetEntity = RecipeUser.class)
     private RecipeUser author;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "recipe")
+    private List<Step> steps;
 }
