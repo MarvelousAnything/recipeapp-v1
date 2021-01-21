@@ -7,8 +7,10 @@ spring:
     username: sa
   profiles:
     active: @activatedProperties@
+  h2:
+    console:
+      enabled: true
 app:
   datasource:
     jdbc-url: jdbc:h2:mem:testdb
     username: sa
-jpa
