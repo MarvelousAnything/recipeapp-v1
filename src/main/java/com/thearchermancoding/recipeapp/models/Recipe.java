@@ -35,4 +35,9 @@ public class Recipe {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "recipe")
     private List<Step> steps;
+    @Column(name = "prep_time")
+    private int prepTime;
+
+    @Column(name = "servings")
+    private int servings;
 }
