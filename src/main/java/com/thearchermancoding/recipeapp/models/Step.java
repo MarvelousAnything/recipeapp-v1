@@ -22,9 +22,13 @@ public class Step {
     private Long id;
 
     @NonNull
-    @JoinColumn(name = "ingredient_id", nullable = false)
-    @ManyToOne(targetEntity = RecipeIngredient.class)   // TODO: Make it so I can use a many to many relationship
-    private RecipeIngredient ingredients;
+    @JoinTable(
+            name = "step_ingredient",
+            joinColumns = @JoinColumn(name = "step_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id", referencedColumnName = "id")
+    )
+    @ManyToMany(targetEntity = RecipeIngredient.class)
+    private List<RecipeIngredient> ingredients;
 
     @NonNull
     @Column(name = "instruction")
