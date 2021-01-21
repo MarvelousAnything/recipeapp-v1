@@ -45,6 +45,6 @@ public class RecipeBook {
     private List<Recipe> recipes = new ArrayList<Recipe>();
 
     @JoinColumn(name = "owner_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = RecipeUser.class)
     private RecipeUser owner;
 }

@@ -35,6 +35,10 @@ public class Recipe {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "recipe")
     private List<Step> steps;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "recipe")
+    private List<Rating> ratings;
+
     @Column(name = "prep_time")
     private int prepTime;
 

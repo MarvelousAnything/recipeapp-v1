@@ -36,4 +36,5 @@ public class Rating {
 
     @Column(name = "review")
     private String review;
+
 }

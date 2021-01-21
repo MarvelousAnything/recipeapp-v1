@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * The type Recipe user.
@@ -29,4 +30,13 @@ public class RecipeUser {
 
     @Column(name = "email", length = 100)
     private String email;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Rating> ratings;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
+    private List<Recipe> recipes;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
+    private List<RecipeBook> recipeBooks;
 }
