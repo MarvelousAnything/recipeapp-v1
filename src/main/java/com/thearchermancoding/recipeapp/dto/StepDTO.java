@@ -1,5 +1,5 @@
 package com.thearchermancoding.recipeapp.dto;
 
-public class RecipeInfoDTO {
-
+public class StepDTO {
+    private Long id;
 }

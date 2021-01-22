@@ -1,5 +1,6 @@
 package com.thearchermancoding.recipeapp.dto;
 
+import com.thearchermancoding.recipeapp.models.RecipeIngredient;
 import com.thearchermancoding.recipeapp.models.RecipeUser;
 import com.thearchermancoding.recipeapp.models.Step;
 import lombok.Getter;
@@ -24,4 +25,8 @@ public class RecipeDTO {
     private int servings;
 
     private List<Step> steps;
+
+    private List<RecipeIngredient> ingredients;
+
+    private float averageRating;
 }
