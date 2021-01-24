@@ -1,43 +1,55 @@
 package com.thearchermancoding.recipeapp.services;
 
+import com.thearchermancoding.recipeapp.dto.RecipeDTO;
 import com.thearchermancoding.recipeapp.models.Rating;
 import com.thearchermancoding.recipeapp.models.Recipe;
 import com.thearchermancoding.recipeapp.repositories.RecipeRepository;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.internal.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class RecipeService {
 
-    private RecipeRepository repository;
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
-    public RecipeService(RecipeRepository repository) {
-        this.repository = repository;
+    private RecipeRepository repository;
+
+    public Iterable<RecipeDTO> getAllRecipes() {
+        return StreamSupport
+                .stream(repository.findAll().spliterator(), false)
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
-    public Iterable<Recipe> getAllRecipes() {
-        return repository.findAll();
+    public Optional<RecipeDTO> getRecipeById(Long id) {
+        return repository.findById(id).map(this::convertToDTO);
     }
 
-    public Optional<Recipe> getRecipeById(Long id) {
-        return repository.findById(id);
+    public void updateRecipe(RecipeDTO recipeDTO) {
+        repository.save(convertToEntity(recipeDTO));
     }
 
-    public void updateRecipe(Recipe recipe) {
-        repository.save(recipe);
-    }
-
-    public Recipe createRecipe(Recipe recipe) {
-        return repository.save(recipe);
+    public Recipe createRecipe(RecipeDTO recipeDTO) {
+        return repository.save(convertToEntity(recipeDTO));
     }
 
     public void deleteRecipeById(Long id) {
         repository.deleteById(id);
+    }
+
+    public void deleteRecipe(RecipeDTO recipeDTO) {
+        repository.delete(convertToEntity(recipeDTO));
     }
 
     public void deleteRecipe(Recipe recipe) {
@@ -48,11 +60,24 @@ public class RecipeService {
         OptionalDouble average;
         Optional<Recipe> rating = repository.findById(id);
         if (rating.isPresent()) {
-            average = rating.get().getRatings().stream().mapToDouble(Rating::getRating).average();
+            average = rating.get()
+                    .getRatings()
+                    .stream()
+                    .mapToDouble(Rating::getRating)
+                    .average();
             if (average.isPresent()) {
                 return Optional.of((float) average.getAsDouble());
             }
         }
         return Optional.empty();
     }
+
+    public RecipeDTO convertToDTO(Recipe recipe) {
+        return modelMapper.map(recipe, RecipeDTO.class);
+    }
+
+    public Recipe convertToEntity(RecipeDTO recipeDTO) {
+        return modelMapper.map(recipeDTO, Recipe.class);
+    }
+
 }

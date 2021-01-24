@@ -5,6 +5,7 @@ import com.thearchermancoding.recipeapp.models.RecipeUser;
 import com.thearchermancoding.recipeapp.models.Step;
 import lombok.Getter;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import java.util.List;
 
@@ -18,15 +19,12 @@ public class RecipeDTO {
 
     private String description;
 
-    private RecipeUser author;
+    //private String author;
 
     private int prepTime;
 
     private int servings;
 
-    private List<Step> steps;
+    private List<StepDTO> steps;
 
-    private List<RecipeIngredient> ingredients;
-
-    private float averageRating;
 }

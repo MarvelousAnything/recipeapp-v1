@@ -21,12 +21,12 @@ public class RecipeIngredient {
     private Long id;
 
     @NonNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ingredient_id", nullable = false)
     private Ingredient ingredient;
 
     @NonNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "unit_id", nullable = false)
     private MeasuringUnit unit;
 

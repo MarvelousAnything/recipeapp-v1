@@ -42,7 +42,7 @@ public class RecipeBook {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
-    private List<Recipe> recipes = new ArrayList<Recipe>();
+    private List<Recipe> recipes = new ArrayList<>();
 
     @JoinColumn(name = "owner_id")
     @ManyToOne(targetEntity = RecipeUser.class)

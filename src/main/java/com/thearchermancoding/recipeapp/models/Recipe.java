@@ -28,8 +28,7 @@ public class Recipe {
     @Column(name = "description")
     private String description;
 
-    @NonNull
-    @JoinColumn(name = "author_id", nullable = false)
+    @JoinColumn(name = "author_id", nullable = true)
     @ManyToOne(targetEntity = RecipeUser.class)
     private RecipeUser author;
 

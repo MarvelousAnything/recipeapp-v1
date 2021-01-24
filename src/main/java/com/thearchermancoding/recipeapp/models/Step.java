@@ -36,15 +36,16 @@ public class Step {
             joinColumns = @JoinColumn(name = "step_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "ingredient_id", referencedColumnName = "id")
     )
-    @ManyToMany(targetEntity = RecipeIngredient.class)
+    @ManyToMany(targetEntity = RecipeIngredient.class, cascade = CascadeType.ALL)
     private List<RecipeIngredient> ingredients;
+
+    @NonNull
+    @Column(name = "step_number", nullable = false)
+    private Integer stepNumber;
 
     @NonNull
     @Column(name = "instruction")
     private String instruction;
 
-    @NonNull
-    @Column(name = "step_number", nullable = false)
-    private Integer stepNumber;
 
 }
