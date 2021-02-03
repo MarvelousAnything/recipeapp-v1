@@ -11,11 +11,16 @@
     <groupId>com.thearchermancoding</groupId>
     <artifactId>recipeapp</artifactId>
     <version>0.1.0</version>
+    <packaging>pom</packaging>
     <name>recipeapp</name>
     <description>Recipe app</description>
 
+    <modules>
+        <module>discovery-server</module>
+    </modules>
+
     <properties>
-        <java.version>14</java.version>
+        <java.version>15</java.version>
     </properties>
 
     <dependencies>
