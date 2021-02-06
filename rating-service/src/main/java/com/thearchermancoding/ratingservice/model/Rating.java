@@ -1,5 +1,6 @@
 package com.thearchermancoding.ratingservice.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @Table(name = "rating")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rating_generator")
@@ -20,17 +22,14 @@ public class Rating {
     @Column(name = "id", unique = true, updatable = false)
     private Long id;
 
-    @NonNull
-    @Column(name = "recipe_id")
+    @Column(name = "recipe_id", nullable = false)
     private Long recipeId;
 
-    @NonNull
-    @Column(name = "reviewer_id")
+    @Column(name = "reviewer_id", nullable = false)
     private Long reviewerId;
 
-    @NonNull
     @Column(name = "rating", nullable = false)
-    private int rating;
+    private Double rating;
 
     @Column(name = "review")
     private String review;
