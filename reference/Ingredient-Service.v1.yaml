@@ -1,0 +1,303 @@
+openapi: 3.0.0
+info:
+  title: Ingredient Service
+  version: '1.0'
+servers:
+  - url: 'http://localhost:9091'
+paths:
+  /ingredients:
+    get:
+      summary: Get All Ingredients
+      tags: []
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: array
+                description: ''
+                minItems: 1
+                uniqueItems: true
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      minLength: 1
+                    description:
+                      type: string
+                      minLength: 1
+                    unitName:
+                      type: string
+                      minLength: 1
+                    unitVariable:
+                      type: string
+                      minLength: 1
+                    amount:
+                      type: number
+                  required:
+                    - name
+                    - description
+                    - unitName
+                    - unitVariable
+                    - amount
+              examples:
+                Chocolate and Milk:
+                  value:
+                    - name: Chocolate
+                      description: 'A food preparation in the form of a paste or solid block made from roasted and ground cacao seeds, typically sweetened.'
+                      unitName: gram
+                      unitVariable: g
+                      amount: 5
+                    - name: Milk
+                      description: 'An opaque white fluid rich in fat and protein, secreted by female mammals for the nourishment of their young.'
+                      unitName: liter
+                      unitVariable: L
+                      amount: 5
+      operationId: get-ingredients
+  '/ingredient/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get One Ingredient
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  name:
+                    type: string
+                    minLength: 1
+                  description:
+                    type: string
+                    minLength: 1
+                  unitName:
+                    type: string
+                    minLength: 1
+                  unitVariable:
+                    type: string
+                    minLength: 1
+                  amount:
+                    type: number
+                required:
+                  - name
+                  - description
+                  - unitName
+                  - unitVariable
+                  - amount
+              examples:
+                Cougar Gold:
+                  value:
+                    name: Cougar Gold
+                    description: 'An American Cheddar cheese produced at Ferdinand''s Creamery on the Washington State University campus in Pullman, Washington.'
+                    unitName: gram
+                    unitVariable: g
+                    amount: 10
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+      operationId: get-ingredient-id
+    post:
+      summary: Create Ingredient
+      operationId: post-ingredient-id
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  name:
+                    type: string
+                    minLength: 1
+                  description:
+                    type: string
+                    minLength: 1
+                  unitName:
+                    type: string
+                    minLength: 1
+                  unitVariable:
+                    type: string
+                    minLength: 1
+                  amount:
+                    type: number
+                required:
+                  - name
+                  - description
+                  - unitName
+                  - unitVariable
+                  - amount
+              examples:
+                Cougar Gold:
+                  value:
+                    name: string
+                    description: string
+                    unitName: string
+                    unitVariable: string
+                    amount: 0
+        '400':
+          description: Bad Request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                  minLength: 1
+                unitName:
+                  type: string
+                  minLength: 1
+                unitVariable:
+                  type: string
+                  minLength: 1
+                amount:
+                  type: number
+              required:
+                - name
+                - description
+                - unitName
+                - unitVariable
+                - amount
+            examples:
+              Cougar Gold:
+                value:
+                  name: Cougar Gold
+                  description: 'An American Cheddar cheese produced at Ferdinand''s Creamery on the Washington State University campus in Pullman, Washington.'
+                  unitName: gram
+                  unitVariable: g
+                  amount: 10
+    put:
+      summary: Update Ingredient
+      operationId: put-ingredient-id
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  name:
+                    type: string
+                    minLength: 1
+                  description:
+                    type: string
+                    minLength: 1
+                  unitName:
+                    type: string
+                    minLength: 1
+                  unitVariable:
+                    type: string
+                    minLength: 1
+                  amount:
+                    type: number
+                required:
+                  - name
+                  - description
+                  - unitName
+                  - unitVariable
+                  - amount
+              examples:
+                Cougar Gold:
+                  value:
+                    name: Cougar Gold
+                    description: 'An American Cheddar cheese produced at Ferdinand''s Creamery on the Washington State University campus in Pullman, Washington.'
+                    unitName: gram
+                    unitVariable: g
+                    amount: 10
+          headers: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                  minLength: 1
+                unitName:
+                  type: string
+                  minLength: 1
+                unitVariable:
+                  type: string
+                  minLength: 1
+                amount:
+                  type: number
+              required:
+                - name
+                - description
+                - unitName
+                - unitVariable
+                - amount
+    delete:
+      summary: Delete Ingredient
+      operationId: delete-ingredient-id
+      responses:
+        '204':
+          description: No Content
+components:
+  schemas:
+    Ingredient:
+      title: Ingredient
+      type: object
+      x-examples: {}
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+    RecipeIngredient:
+      title: RecipeIngredient
+      type: object
+      properties:
+        id:
+          type: integer
+        ingredient:
+          $ref: '#/components/schemas/Ingredient'
+        unit:
+          $ref: '#/components/schemas/MeasuringUnit'
+        amount:
+          type: integer
+    MeasuringUnit:
+      title: MeasuringUnit
+      type: object
+      properties:
+        id:
+          type: integer
+        unitName:
+          type: string
+        unitVariable:
+          type: string
+  securitySchemes: {}
