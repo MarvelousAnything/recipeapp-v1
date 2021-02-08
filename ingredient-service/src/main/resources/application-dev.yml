@@ -12,3 +12,4 @@ app:
   datasource:
     jdbc-url: jdbc:h2:./data/ingredientservicedb;AUTO_SERVER=TRUE
     username: sa
+debug: true
