@@ -30,12 +30,7 @@ public class RatingController {
     @GetMapping(value = "/{id}")
     @ResponseBody
     public ResponseEntity<Rating> getRating(@PathVariable("id") Long id) {
-        ResponseEntity<Rating> response = ResponseEntity.of(service.findById(id));
-        log.info("Response from getRating(" + id + ") " + response.toString());
-        if (response.getStatusCode().is4xxClientError()) {
-            log.info("Returned Rating Object: " + service.findById(id).orElse(null));
-        }
-        return response;
+        return ResponseEntity.of(service.findById(id));
     }
 
     @GetMapping

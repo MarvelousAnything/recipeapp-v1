@@ -1,9 +1,13 @@
 openapi: 3.0.0
 info:
-  title: Ingredient Service
+  title: Recipe App
   version: '1.0'
+  contact:
+    name: Owen Hayes
+    url: 'https://github.com/thearchermancoding/recipeapp/issues'
+    email: thearchermancoding@gmail.com
 servers:
-  - url: 'http://localhost:9091'
+  - url: 'http://localhost:9191'
 paths:
   /ingredients:
     get:
@@ -21,28 +25,7 @@ paths:
                 minItems: 1
                 uniqueItems: true
                 items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                      minLength: 1
-                    description:
-                      type: string
-                      minLength: 1
-                    unitName:
-                      type: string
-                      minLength: 1
-                    unitVariable:
-                      type: string
-                      minLength: 1
-                    amount:
-                      type: number
-                  required:
-                    - name
-                    - description
-                    - unitName
-                    - unitVariable
-                    - amount
+                  $ref: '#/components/schemas/RecipeIngredient'
               examples:
                 Chocolate and Milk:
                   value:
@@ -73,29 +56,7 @@ paths:
           content:
             application/json:
               schema:
-                description: ''
-                type: object
-                properties:
-                  name:
-                    type: string
-                    minLength: 1
-                  description:
-                    type: string
-                    minLength: 1
-                  unitName:
-                    type: string
-                    minLength: 1
-                  unitVariable:
-                    type: string
-                    minLength: 1
-                  amount:
-                    type: number
-                required:
-                  - name
-                  - description
-                  - unitName
-                  - unitVariable
-                  - amount
+                $ref: '#/components/schemas/RecipeIngredient'
               examples:
                 Cougar Gold:
                   value:
@@ -192,37 +153,15 @@ paths:
                   unitVariable: g
                   amount: 10
     put:
-      summary: Update Ingredient
+      summary: ''
       operationId: put-ingredient-id
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
-                description: ''
-                type: object
-                properties:
-                  name:
-                    type: string
-                    minLength: 1
-                  description:
-                    type: string
-                    minLength: 1
-                  unitName:
-                    type: string
-                    minLength: 1
-                  unitVariable:
-                    type: string
-                    minLength: 1
-                  amount:
-                    type: number
-                required:
-                  - name
-                  - description
-                  - unitName
-                  - unitVariable
-                  - amount
+                $ref: '#/components/schemas/RecipeIngredient'
               examples:
                 Cougar Gold:
                   value:
@@ -257,12 +196,7 @@ paths:
                   minLength: 1
                 amount:
                   type: number
-              required:
-                - name
-                - description
-                - unitName
-                - unitVariable
-                - amount
+        description: ''
     delete:
       summary: Delete Ingredient
       operationId: delete-ingredient-id
@@ -271,6 +205,38 @@ paths:
           description: No Content
         '404':
           description: Not Found
+    patch:
+      summary: Update Ingredient
+      operationId: patch-ingredient-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecipeIngredient'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                  minLength: 1
+                unitName:
+                  type: string
+                  minLength: 1
+                unitVariable:
+                  type: string
+                  minLength: 1
+                amount:
+                  type: number
+        description: ''
 components:
   schemas:
     Ingredient:
@@ -305,6 +271,61 @@ components:
         unitName:
           type: string
         unitVariable:
+          type: string
+    User:
+      description: ''
+      type: object
+      properties:
+        firstName:
+          type: string
+          minLength: 1
+        lastName:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          minLength: 1
+      required:
+        - firstName
+        - lastName
+        - email
+    Recipe:
+      title: Recipe
+      type: object
+      properties:
+        id:
+          type: string
+    Step:
+      title: Step
+      type: object
+      properties:
+        id:
+          type: string
+    Rating:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        recipe:
+          $ref: '#/components/schemas/Recipe'
+        reviewer:
+          $ref: '#/components/schemas/User'
+        rating:
+          type: number
+        review:
+          type: string
+      required:
+        - id
+        - recipe
+        - reviewer
+        - rating
+        - review
+    RecipeBook:
+      title: Recipe-Book
+      type: object
+      properties:
+        id:
           type: string
   securitySchemes: {}
   examples: {}
