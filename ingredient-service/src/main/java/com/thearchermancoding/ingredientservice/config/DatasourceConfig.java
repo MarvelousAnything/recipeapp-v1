@@ -1,13 +1,14 @@
-package com.thearchermancoding.ingredientservice.datasource;
+package com.thearchermancoding.ingredientservice.config;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Datasource {
+public class DatasourceConfig {
 
     @Bean
     @ConfigurationProperties("app.datasource")
