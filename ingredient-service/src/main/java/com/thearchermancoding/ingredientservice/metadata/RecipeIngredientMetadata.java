@@ -14,6 +14,8 @@ import org.springframework.hateoas.RepresentationModel;
 @NoArgsConstructor
 public class RecipeIngredientMetadata extends RepresentationModel<RecipeIngredientMetadata> {
 
+    private Long id;
+
     private String name;
 
     private String description;

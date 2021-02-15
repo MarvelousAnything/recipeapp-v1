@@ -42,6 +42,7 @@ public class RecipeIngredientController {
     public EntityModel<RecipeIngredientMetadata> getIngredient(@PathVariable("id") Long id) {
         RecipeIngredient recipeIngredient = this.service.fetchRecipeIngredient(id);
         RecipeIngredientMetadata recipeIngredientMetadata = this.resourceAssembler.toModel(recipeIngredient);
+        recipeIngredientMetadata.add(linkTo(methodOn(RecipeIngredientController.class).getAllIngredients()).withRel("ingredients"));
         return EntityModel.of(recipeIngredientMetadata);
     }
 

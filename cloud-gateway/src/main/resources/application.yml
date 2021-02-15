@@ -50,3 +50,7 @@ management:
     web:
       exposure:
         include: hystrix.stream
+eureka:
+  instance:
+    ip-address: 192.168.0.122
+    prefer-ip-address: true
