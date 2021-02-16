@@ -1,6 +1,6 @@
 server:
   port: 9191
-  address: 192.168.0.122
+  address: localhost
 
 spring:
   application:
@@ -53,5 +53,6 @@ management:
         include: hystrix.stream
 eureka:
   instance:
-    ip-address: 192.168.0.122
-    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    prefer-ip-address: false
+    hostname: localhost

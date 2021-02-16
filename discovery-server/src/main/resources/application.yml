@@ -5,8 +5,9 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
   instance:
-    ip-address: 192.168.0.122
-    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    prefer-ip-address: false
+    hostname: localhost
 spring:
   application:
     name: discovery-server
