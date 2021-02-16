@@ -3,6 +3,7 @@ package com.thearchermancoding.ingredientservice.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
@@ -10,9 +11,10 @@ import javax.persistence.*;
  * The type Measuring unit.
  */
 @Entity
-@Table(name = "measuring_unit")
+@Table(name = "measuring_unit", uniqueConstraints = {@UniqueConstraint(columnNames = {"unit_variable", "unit_name"})})
 @Data
 @NoArgsConstructor
+@RequiredArgsConstructor
 public class MeasuringUnit {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "unit_generator")
@@ -21,10 +23,10 @@ public class MeasuringUnit {
     private Long id;
 
     @NonNull
-    @Column(name = "unit_name", nullable = false, length = 50)
-    private String unitName;
-
-    @NonNull
     @Column(name = "unit_variable", nullable = false, length = 10)
     private String unitVariable;
+
+    @NonNull
+    @Column(name = "unit_name", nullable = false, length = 50)
+    private String unitName;
 }

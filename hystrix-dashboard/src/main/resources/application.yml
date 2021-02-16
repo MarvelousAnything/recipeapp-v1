@@ -8,5 +8,7 @@ spring:
 
 hystrix:
   dashboard:
-    proxy-stream-allow-list: "*"
+    proxy-stream-allow-list:
+      - "*"
+      - "192.168.0.122"
 

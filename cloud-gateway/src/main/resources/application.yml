@@ -1,5 +1,6 @@
 server:
   port: 9191
+  address: 192.168.0.122
 
 spring:
   application:

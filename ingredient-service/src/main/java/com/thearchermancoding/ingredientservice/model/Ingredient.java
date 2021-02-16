@@ -1,8 +1,6 @@
 package com.thearchermancoding.ingredientservice.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +11,7 @@ import javax.persistence.*;
 @Table(name = "ingredient")
 @Data
 @NoArgsConstructor
+@RequiredArgsConstructor
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_generator")
@@ -21,7 +20,7 @@ public class Ingredient {
     private Long id;
 
     @NonNull
-    @Column(name = "name", nullable = false, length = 50)
+    @Column(name = "name", nullable = false, length = 50, unique = true)
     private String name;
 
     @NonNull

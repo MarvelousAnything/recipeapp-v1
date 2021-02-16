@@ -1,6 +1,6 @@
 #FileLock
-#Mon Feb 15 11:26:23 PST 2021
-server=172.26.112.1\:58369
+#Mon Feb 15 16:35:41 PST 2021
+server=172.24.48.1\:52474
 hostName=Owens-PC.mshome.net
 method=file
-id=177a72870be451e4349d5deedc992866e1a0cae4499
+id=177a8439bbff8ceac9012fafa6dda5777724c13d14f

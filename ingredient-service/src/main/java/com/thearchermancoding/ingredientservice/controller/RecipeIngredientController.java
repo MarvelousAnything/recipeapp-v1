@@ -1,6 +1,5 @@
 package com.thearchermancoding.ingredientservice.controller;
 
-import com.thearchermancoding.ingredientservice.dto.RecipeIngredientDTO;
 import com.thearchermancoding.ingredientservice.metadata.RecipeIngredientMetadata;
 import com.thearchermancoding.ingredientservice.metadata.RecipeIngredientMetadataAssembler;
 import com.thearchermancoding.ingredientservice.model.RecipeIngredient;

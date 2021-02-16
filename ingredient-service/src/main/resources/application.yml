@@ -5,15 +5,16 @@ spring:
     generate-ddl: true
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
   profiles:
     active: @activatedProperties@
   zipkin:
     base-url: http://127.0.0.1:9411/
 server:
   port: 9091
+  forward-headers-strategy: framework
+  address: 192.168.0.122
 eureka:
   instance:
     ip-address: 192.168.0.122
-    hostname: localhost
     prefer-ip-address: true
