@@ -26,14 +26,4 @@ public class RecipeIngredientMetadata extends RepresentationModel<RecipeIngredie
 
     private float amount;
 
-    public void setIngredient(Ingredient ingredient) {
-        this.name = ingredient.getName();
-        this.description = ingredient.getDescription();
-    }
-
-    public void setUnit(MeasuringUnit unit) {
-        this.unitVariable = unit.getUnitVariable();
-        this.unitName = unit.getUnitName();
-    }
-
 }

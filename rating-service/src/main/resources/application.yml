@@ -12,6 +12,7 @@ spring:
     base-url: http://127.0.0.1:9411/
 server:
   port: 9093
+  forward-headers-strategy: framework
 eureka:
   instance:
     ip-address: 127.0.0.1

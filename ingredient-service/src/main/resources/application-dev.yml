@@ -1,4 +1,4 @@
-spring:
+uspring:
   jpa:
     database: h2
   datasource:

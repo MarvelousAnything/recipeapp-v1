@@ -50,7 +50,6 @@ public class RecipeIngredientMetadataAssembler extends RepresentationModelAssemb
             }
         };
         this.modelMapper.createTypeMap(RecipeIngredientMetadata.class, RecipeIngredient.class).setConverter(handleNewRecipeIngredient);
-
     }
 
     @Override
