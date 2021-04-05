@@ -58,9 +58,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-test</artifactId>
-            <scope>test</scope>
+            <groupId>org.axonframework</groupId>
+            <artifactId>axon-spring-boot-starter</artifactId>
+            <version>4.4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.thearchermancoding</groupId>
+            <artifactId>common</artifactId>
+            <version>0.1.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <dependencyManagement>

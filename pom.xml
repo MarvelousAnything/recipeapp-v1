@@ -30,6 +30,7 @@
         <module>cloud-config-server</module>
         <module>hystrix-dashboard</module>
         <module>rating-service</module>
+        <module>common</module>
     </modules>
 
 
